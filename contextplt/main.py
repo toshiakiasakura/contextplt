@@ -8,15 +8,15 @@ class Single():
     Examples: 
         Basic usage. 
 
-        >>> import vis_utils
+        >>> import contextplt
         >>> x = [1,2,3]
         >>> y = [1,2,3]
-        >>> with vis_utils.BasicPlot() as p:
+        >>> with contextplt.Single() as p:
         >>>     p.ax.plot(x,y)
 
         With parameter version.
 
-        >>> with vis_utils.BasicPlot(xlim=[0,5], ylim=[0,5], xlabel="xlabel", ylabel="ylabel",
+        >>> with contextplt.Single(xlim=[0,5], ylim=[0,5], xlabel="xlabel", ylabel="ylabel",
         ...         title="title", figsize=(6,6), dpi=150) as p:
         >>>     p.ax.plot(x,y)
 
@@ -24,7 +24,7 @@ class Single():
 
         >>> kargs = dict(xlim=[0,5], ylim=[0,5], xlabel="xlabel", ylabel="ylabel",
         ...         title="title", figsize=(6,6), dpi=150)
-        >>> with vis_utils.BasicPlot(**kargs) as p:
+        >>> with contextplt.Single(**kargs) as p:
         >>>     p.ax.plot(x,y)
     """
     def __init__(self, xlim=None, ylim=None, xlabel="", ylabel="",title="",tight=True,
@@ -65,7 +65,7 @@ class Single():
         See DatePlot for example.'''
         pass
 
-class DatePlot(Single):
+class Date(Single):
     def __init__(self,rotation=90,x_fontsize=10,**kargs):
         super().__init__(**kargs)
         self.rotation = rotation
@@ -83,9 +83,9 @@ class Multiple():
         Basic usage. 
         
         >>> import numpy as np
-        >>> import vis_utils
+        >>> import contextplt
         >>> x1, x2, y1, y2= np.random.rand(4, 100)
-        >>> with vis_utils.MultiPlot(grid=(2,1),figsize=(4,4), dpi=150) as p:
+        >>> with contextplt.Single(grid=(2,1),figsize=(4,4), dpi=150) as p:
         >>>     ax = p.set_ax(1, title="title1")
         >>>     ax.plot(x1,y1)
         >>>     ax = p.set_ax(2, title="title2")
@@ -93,7 +93,7 @@ class Multiple():
 
         Various options. Label_outer only leaves the outside of ticks and labels. 
 
-        >>> with vis_utils.MultiPlot(grid=(2,2),figsize=(6,4), dpi=150,
+        >>> with contextplt.Single(grid=(2,2),figsize=(6,4), dpi=150,
         ...         suptitle="super title", label_outer=True) as p:
         >>>     for i in range(4):
         >>>         ax = p.set_ax(i + 1, xlabel=f"xlabel{i+1}", ylabel=f"ylabel{i+1}")
