@@ -25,7 +25,7 @@ setup(
 
     description='Context manager style of matplotlib.', # パッケージの簡単な説明
     long_description=long_description, # PyPIに'Project description'として表示されるパッケージの説明文
-    long_description_content_type='text/markdown' # long_descriptionの形式を'text/plain', 'text/x-rst', 'text/markdown'のいずれかから指定
+    long_description_content_type='text/markdown', # long_descriptionの形式を'text/plain', 'text/x-rst', 'text/markdown'のいずれかから指定
     keywords='context matplotlib plt', # PyPIでの検索用キーワードをスペース区切りで指定
 
     classifiers=[

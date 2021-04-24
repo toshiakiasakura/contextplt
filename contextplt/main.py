@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import matplotlib.dates as mdates
 
-class BasicPlot():
+class Single():
     """Create one figure. Adjust figure with arguments. 
 
     Examples: 
@@ -65,7 +65,7 @@ class BasicPlot():
         See DatePlot for example.'''
         pass
 
-class DatePlot(BasicPlot):
+class DatePlot(Single):
     def __init__(self,rotation=90,x_fontsize=10,**kargs):
         super().__init__(**kargs)
         self.rotation = rotation
@@ -76,7 +76,7 @@ class DatePlot(BasicPlot):
         self.ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
         plt.xticks(rotation=self.rotation,fontsize=self.x_fontsize)
 
-class MultiPlot():
+class Multiple():
     """Create multiple figures in one picture with arguments. 
 
     Examples:
