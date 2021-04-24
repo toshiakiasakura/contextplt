@@ -7,7 +7,7 @@ create a lot of figures in a simple manner.
 
 # Installation 
 ```bash
-pip install contextlib
+pip install contextplt
 ```
 
 # Usage
