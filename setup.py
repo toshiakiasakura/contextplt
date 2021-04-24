@@ -12,7 +12,7 @@ setup(
     name='contextplt', # パッケージ名(プロジェクト名)
     packages=['contextplt'], # パッケージ内(プロジェクト内)のパッケージ名をリスト形式で指定
 
-    version='0.1.0', # バージョン
+    # version='0.1.1', # バージョン -> setup.cfg
 
     license='MIT', # ライセンス
 
