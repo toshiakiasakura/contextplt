@@ -13,9 +13,10 @@ pip install contextplt
 # Usage
 You can write the matplotlib figure with context manager like this. 
 ```python
+import contextplt as cplt
 x = [1,2,3]
 y = [1,2,3]
-with contextplt.Single(xlim=[0,5], ylim=[0,5], xlabel="xlabel", ylabel="ylabel",
+with cplt.Single(xlim=[0,5], ylim=[0,5], xlabel="xlabel", ylabel="ylabel",
         title="title", figsize=(6,6), dpi=150) as p:
     p.ax.plot(x,y)
 ```
@@ -38,7 +39,7 @@ The benefit of context manager is recursive use of parameters using keyword argu
 ```python
 kargs = dict(xlim=[0,5], ylim=[0,5], xlabel="xlabel", ylabel="ylabel",
         title="title", figsize=(6,6), dpi=150)
-with contextplt.Single(**kargs) as p:
+with cplt.Single(**kargs) as p:
     p.ax.plot(x,y)
 ```
 If you want to replicate this figure options with different values, you just change inside contents of values.

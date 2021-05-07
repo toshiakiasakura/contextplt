@@ -39,8 +39,10 @@ class Single():
         """
         self.fig = plt.figure(figsize=figsize,dpi=dpi)
         self.ax = self.fig.add_subplot(111)
-        self.ax.set_xlabel(xlabel)
-        self.ax.set_ylabel(ylabel)
+
+        self.xlabel = xlabel
+        self.ylabel = ylabel
+
         self.ax.set_xlim(xlim) if xlim else None
         self.ax.set_ylim(ylim) if ylim else None
         self.save_path = save_path
@@ -53,6 +55,9 @@ class Single():
 
     def __exit__(self,exc_type, exc_value, exc_traceback):
         self.option()
+
+        self.ax.set_xlabel(self.xlabel)
+        self.ax.set_ylabel(self.ylabel)
         plt.title(self.title)
         plt.xticks(rotation=self.rotation)
         plt.tight_layout() if self.tight else None
