@@ -143,7 +143,7 @@ class Multiple():
             for ax in self.fig.get_axes():
                 ax.label_outer()
         plt.tight_layout() if self.tight else None
-        plt.savefig(self.save_path, self.savefig_kargs) if self.save_path else None
+        plt.savefig(self.save_path, **self.savefig_kargs) if self.save_path else None
         plt.show() if self.show else None
 
     def option(self):
