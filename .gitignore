@@ -8,6 +8,8 @@
 build/
 dist/
 contextplt.egg-info/
+contextplt/**/*.png
+contextplt/**/*.ipynb
 
 # python 
 __pycache__/

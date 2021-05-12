@@ -28,7 +28,8 @@ class Single():
         >>>     p.ax.plot(x,y)
     """
     def __init__(self, xlim=None, ylim=None, xlabel="", ylabel="",title="",tight=True,
-            rotation : int = None, save_path=None, figsize=(5,3), dpi=150):
+            rotation : int = None, save_path=None, figsize=(5,3), dpi=150,
+            savefig_kargs : dict = {}):
         """Set various parameters. 
 
         Attributes:
@@ -49,6 +50,7 @@ class Single():
         self.title = title
         self.tight = tight
         self.rotation = rotation
+        self.savefig_kargs = savefig_kargs
 
     def __enter__(self):
         return(self)
@@ -62,7 +64,7 @@ class Single():
         plt.xticks(rotation=self.rotation)
         plt.tight_layout() if self.tight else None
         if self.save_path:
-            plt.savefig(self.save_path)
+            plt.savefig(self.save_path, **self.savefig_kargs)
         plt.show()
 
     def option(self):
@@ -106,13 +108,15 @@ class Multiple():
         >>>         ax.plot(x,y)
     """
     def __init__(self, figsize=(8,6), dpi=150,grid=(2,2) ,suptitle="",
-            save_path=None,show=True, tight=True, label_outer=False):
+            save_path=None,show=True, tight=True, label_outer=False,
+            savefig_kargs : dict = {}):
         self.fig = plt.figure(figsize=figsize,dpi=dpi)
         self.grid = grid
         self.save_path = save_path
         self.show = show
         self.tight = tight
         self.label_outer = label_outer
+        self.savefig_kargs = savefig_kargs
 
         plt.suptitle(suptitle)
 
@@ -139,7 +143,7 @@ class Multiple():
             for ax in self.fig.get_axes():
                 ax.label_outer()
         plt.tight_layout() if self.tight else None
-        plt.savefig(self.save_path) if self.save_path else None
+        plt.savefig(self.save_path, self.savefig_kargs) if self.save_path else None
         plt.show() if self.show else None
 
     def option(self):
