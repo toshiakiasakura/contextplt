@@ -42,7 +42,8 @@ class Single():
         title : Optional[str] =None,
         titlefontsize : Optional[float] = None,
         tight : bool =True,
-        rotation : Optional[int] = None, 
+        xrotation : Optional[int] = None, 
+        yrotation : Optional[int] = None, 
         save_path : Optional[str] =None, 
         figsize : Tuple[float, float] =(5,3), 
         dpi : int =150,
@@ -75,8 +76,9 @@ class Single():
         self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize)
         self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize)
         self.ax.tick_params(axis='x', which='major', labelsize=self.xtickfontsize, 
-                            rotation=self.rotation)
-        self.ax.tick_params(axis='y', which='major', labelsize=self.ytickfontsize)
+                            rotation=self.xrotation)
+        self.ax.tick_params(axis='y', which='major', labelsize=self.ytickfontsize
+                            rotation=self.yrotation)
         plt.title(self.title, fontsize=self.titlefontsize)
         plt.tight_layout() if self.tight else None
         if self.save_path:
