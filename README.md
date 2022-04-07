@@ -1,7 +1,7 @@
 # contextplt
 [![python](https://img.shields.io/pypi/pyversions/contextplt)](https://www.python.org/)
-[![PyPI](https://img.shields.io/pypi/v/contextplt.svg)](https://pypi.org/project/py-simple-report/)
-[![license](https://img.shields.io/pypi/l/contextplt?color=blue)](https://github.com/toshiakiasakura/py-simple-report/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/contextplt.svg)](https://pypi.org/project/contextplt/)
+[![license](https://img.shields.io/pypi/l/contextplt?color=blue)](https://github.com/toshiakiasakura/contextplt/blob/main/LICENSE)
 
 Source code repository for the contextplt package.
 
