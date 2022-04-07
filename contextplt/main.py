@@ -77,7 +77,7 @@ class Single():
         self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize)
         self.ax.tick_params(axis='x', which='major', labelsize=self.xtickfontsize, 
                             rotation=self.xrotation)
-        self.ax.tick_params(axis='y', which='major', labelsize=self.ytickfontsize
+        self.ax.tick_params(axis='y', which='major', labelsize=self.ytickfontsize,
                             rotation=self.yrotation)
         plt.title(self.title, fontsize=self.titlefontsize)
         plt.tight_layout() if self.tight else None
