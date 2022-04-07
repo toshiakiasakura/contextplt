@@ -1,3 +1,5 @@
+from typing import Union, Optional, List, Dict, Tuple, Any
+
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import matplotlib.dates as mdates
@@ -27,9 +29,25 @@ class Single():
         >>> with contextplt.Single(**kargs) as p:
         >>>     p.ax.plot(x,y)
     """
-    def __init__(self, xlim=None, ylim=None, xlabel="", ylabel="",title="",tight=True,
-            rotation : int = None, save_path=None, figsize=(5,3), dpi=150,
-            savefig_kargs : dict = {}):
+    def __init__(
+        self, 
+        xlim : Optional[List[float]] = None, 
+        ylim : Optional[List[float]] = None, 
+        xlabel : Optional[str] = None, 
+        ylabel : Optional[str] = None,
+        xlabelfontsize : Optional[float] = None,
+        ylabelfontsize : Optional[float] = None,
+        xtickfontsize : Optional[float] = None,
+        ytickfontsize : Optional[float] = None,
+        title : Optional[str] =None,
+        titlefontsize : Optional[float] = None,
+        tight : bool =True,
+        rotation : Optional[int] = None, 
+        save_path : Optional[str] =None, 
+        figsize : Tuple[float, float] =(5,3), 
+        dpi : int =150,
+        savefig_kargs : dict = {}
+    ):
         """Set various parameters. 
 
         Attributes:
@@ -38,19 +56,15 @@ class Single():
             title (str) : title.
             tight (bool) : tight_layout or not.
         """
+        vars_ = locals()
+        for k,v in vars_.items():
+            setattr(self, k, v)
+
         self.fig = plt.figure(figsize=figsize,dpi=dpi)
         self.ax = self.fig.add_subplot(111)
 
-        self.xlabel = xlabel
-        self.ylabel = ylabel
-
         self.ax.set_xlim(xlim) if xlim else None
         self.ax.set_ylim(ylim) if ylim else None
-        self.save_path = save_path
-        self.title = title
-        self.tight = tight
-        self.rotation = rotation
-        self.savefig_kargs = savefig_kargs
 
     def __enter__(self):
         return(self)
@@ -58,10 +72,12 @@ class Single():
     def __exit__(self,exc_type, exc_value, exc_traceback):
         self.option()
 
-        self.ax.set_xlabel(self.xlabel)
-        self.ax.set_ylabel(self.ylabel)
-        plt.title(self.title)
-        plt.xticks(rotation=self.rotation)
+        self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize)
+        self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize)
+        self.ax.tick_params(axis='x', which='major', labelsize=self.xtickfontsize, 
+                            rotation=self.rotation)
+        self.ax.tick_params(axis='y', which='major', labelsize=self.ytickfontsize)
+        plt.title(self.title, fontsize=self.titlefontsize)
         plt.tight_layout() if self.tight else None
         if self.save_path:
             plt.savefig(self.save_path, **self.savefig_kargs)
@@ -120,7 +136,8 @@ class Multiple():
 
         plt.suptitle(suptitle)
 
-    def set_ax(self,index,xlim=None, ylim=None, xlabel="", ylabel="",title=""):
+    def set_ax(self,index,xlim=None, ylim=None, 
+               xlabel="", ylabel="",title="", rotation : int = 0):
         """Return axis object. 
 
         Args: 
@@ -132,6 +149,7 @@ class Multiple():
         ax.set_xlim(xlim) if xlim else None
         ax.set_ylim(ylim) if ylim else None
         ax.set_title(title)
+        plt.xticks(rotation=rotation)
         return(ax)
 
     def __enter__(self):

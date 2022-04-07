@@ -3,8 +3,13 @@ FROM jupyter/scipy-notebook:584f43f06586
 WORKDIR /workdir
 EXPOSE 8888
 
-RUN pip install contextplt
 # sphinx setting
-RUN conda install sphinx -y && \
-    pip install sphinx-autodoc-typehints
+RUN pip install jupyterlab_vim
 
+RUN pip install twine && \
+    pip install wheel
+
+RUN pip install sphinx && \
+    pip install sphinx_rtd_theme && \
+    pip install sphinx-autodoc-typehints && \
+    pip install nbsphinx

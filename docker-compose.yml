@@ -1,7 +1,7 @@
 version: "3"
 services:
   lab:
-    image: contextlib
+      # image: contextlib
     # used when create a new image.
     build:
         context: .

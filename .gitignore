@@ -3,6 +3,7 @@
 *.csv
 *.swp
 ~*
+test_dir/
 
 .DS_Store
 build/
