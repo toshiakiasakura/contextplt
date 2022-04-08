@@ -47,7 +47,9 @@ class Single():
         save_path : Optional[str] =None, 
         figsize : Tuple[float, float] =(5,3), 
         dpi : int =150,
-        savefig_kargs : dict = {}
+        savefig_kargs : dict = {},
+        show : bool = True,
+
     ):
         """Set various parameters. 
 
@@ -83,7 +85,10 @@ class Single():
         plt.tight_layout() if self.tight else None
         if self.save_path:
             plt.savefig(self.save_path, **self.savefig_kargs)
-        plt.show()
+        if self.show:
+            plt.show()
+        else:
+            plt.close()
 
     def option(self):
         '''This method is for additional graphic setting. 
