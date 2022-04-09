@@ -10,6 +10,7 @@ Welcome to contextplt's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   notebooks/usage
 
 
 Indices and tables

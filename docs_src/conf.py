@@ -35,6 +35,8 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "sphinx_autodoc_typehints",
+    "nbsphinx",
+    "sphinx.ext.mathjax",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -54,6 +56,12 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 import sphinx_rtd_theme
 html_theme = "sphinx_rtd_theme"
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+html_context = {
+  'display_github': True,
+  'github_user': 'toshiakiasakura',
+  'github_repo': 'contextplt',
+  'github_version': 'main/docs_src/',
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
