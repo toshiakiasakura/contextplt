@@ -20,8 +20,7 @@ setup(
 
     author='toshiakiasakura', # パッケージ作者の名前
     author_email='wordpress.akitoshi@gmail.com', # パッケージ作者の連絡先メールアドレス
-
-    url='https://github.com/toshiakiasakura/contextplt', # パッケージに関連するサイトのURL(GitHubなど)
+    url='https://toshiakiasakura.github.io/contextplt/', # パッケージに関連するサイトのURL(GitHubなど)
 
     description='Context manager style of matplotlib.', # パッケージの簡単な説明
     long_description=long_description, # PyPIに'Project description'として表示されるパッケージの説明文
