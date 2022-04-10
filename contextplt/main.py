@@ -1,24 +1,26 @@
+from dataclasses import dataclass, field
 from typing import Union, Optional, List, Dict, Tuple, Any
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import matplotlib.dates as mdates
 
+@dataclass(repr=True)
 class Single():
     """Create one figure. Adjust figure with arguments. 
 
     Examples: 
         Basic usage. 
 
-        >>> import contextplt
+        >>> import contextplt as cplt
         >>> x = [1,2,3]
         >>> y = [1,2,3]
-        >>> with contextplt.Single() as p:
+        >>> with cplt.Single() as p:
         >>>     p.ax.plot(x,y)
 
         With parameter version.
 
-        >>> with contextplt.Single(xlim=[0,5], ylim=[0,5], xlabel="xlabel", ylabel="ylabel",
+        >>> with cplt.Single(xlim=[0,5], ylim=[0,5], xlabel="xlabel", ylabel="ylabel",
         ...         title="title", figsize=(6,6), dpi=150) as p:
         >>>     p.ax.plot(x,y)
 
@@ -26,31 +28,29 @@ class Single():
 
         >>> kargs = dict(xlim=[0,5], ylim=[0,5], xlabel="xlabel", ylabel="ylabel",
         ...         title="title", figsize=(6,6), dpi=150)
-        >>> with contextplt.Single(**kargs) as p:
+        >>> with cplt.Single(**kargs) as p:
         >>>     p.ax.plot(x,y)
     """
-    def __init__(
-        self, 
-        xlim : Optional[List[float]] = None, 
-        ylim : Optional[List[float]] = None, 
-        xlabel : Optional[str] = None, 
-        ylabel : Optional[str] = None,
-        xlabelfontsize : Optional[float] = None,
-        ylabelfontsize : Optional[float] = None,
-        xtickfontsize : Optional[float] = None,
-        ytickfontsize : Optional[float] = None,
-        title : Optional[str] =None,
-        titlefontsize : Optional[float] = None,
-        tight : bool =True,
-        xrotation : Optional[int] = None, 
-        yrotation : Optional[int] = None, 
-        save_path : Optional[str] =None, 
-        figsize : Tuple[float, float] =(5,3), 
-        dpi : int =150,
-        savefig_kargs : dict = {},
-        show : bool = True,
+    xlim : Optional[List[float]] = None
+    ylim : Optional[List[float]] = None 
+    xlabel : Optional[str] = None 
+    ylabel : Optional[str] = None
+    xlabelfontsize : Optional[float] = None
+    ylabelfontsize : Optional[float] = None
+    xtickfontsize : Optional[float] = None
+    ytickfontsize : Optional[float] = None
+    title : Optional[str] =None
+    titlefontsize : Optional[float] = None
+    tight : bool =True
+    xrotation : Optional[int] = None
+    yrotation : Optional[int] = None 
+    save_path : Optional[str] =None
+    figsize : Tuple[float, float] =(5,3)
+    dpi : int =150
+    savefig_kargs : dict = field(default_factory=dict)
+    show : bool = True
 
-    ):
+    def __post_init__(self): 
         """Set various parameters. 
 
         Attributes:
@@ -59,15 +59,11 @@ class Single():
             title (str) : title.
             tight (bool) : tight_layout or not.
         """
-        vars_ = locals()
-        for k,v in vars_.items():
-            setattr(self, k, v)
-
-        self.fig = plt.figure(figsize=figsize,dpi=dpi)
+        self.fig = plt.figure(figsize=self.figsize,dpi=self.dpi)
         self.ax = self.fig.add_subplot(111)
 
-        self.ax.set_xlim(xlim) if xlim else None
-        self.ax.set_ylim(ylim) if ylim else None
+        self.ax.set_xlim(self.xlim) if self.xlim else None
+        self.ax.set_ylim(self.ylim) if self.ylim else None
 
     def __enter__(self):
         return(self)
@@ -113,9 +109,9 @@ class Multiple():
         Basic usage. 
         
         >>> import numpy as np
-        >>> import contextplt
+        >>> import contextplt as cplt
         >>> x1, x2, y1, y2= np.random.rand(4, 100)
-        >>> with contextplt.Single(grid=(2,1),figsize=(4,4), dpi=150) as p:
+        >>> with cplt.Single(grid=(2,1),figsize=(4,4), dpi=150) as p:
         >>>     ax = p.set_ax(1, title="title1")
         >>>     ax.plot(x1,y1)
         >>>     ax = p.set_ax(2, title="title2")
@@ -123,7 +119,7 @@ class Multiple():
 
         Various options. Label_outer only leaves the outside of ticks and labels. 
 
-        >>> with contextplt.Single(grid=(2,2),figsize=(6,4), dpi=150,
+        >>> with cplt.Single(grid=(2,2),figsize=(6,4), dpi=150,
         ...         suptitle="super title", label_outer=True) as p:
         >>>     for i in range(4):
         >>>         ax = p.set_ax(i + 1, xlabel=f"xlabel{i+1}", ylabel=f"ylabel{i+1}")
