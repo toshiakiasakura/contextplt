@@ -9,6 +9,16 @@ import matplotlib.dates as mdates
 class Single():
     """Create one figure. Adjust figure with arguments. 
 
+    Args:
+        figsize : Figure size.
+        dpi : dpi.
+        xlim : x limit.
+        ylim : y limit.
+        xticklabels_show : If False, y tick labels are hidden.
+        yticklabels_show : If False, y tick labels are hidden.
+        xtick_show : If False, tick labels and ticks are hidden.
+        ytick_show : If False, tick labels and ticks are hidden.
+
     Examples: 
         Basic usage. 
 
@@ -31,6 +41,8 @@ class Single():
         >>> with cplt.Single(**kargs) as p:
         >>>     p.ax.plot(x,y)
     """
+    figsize : Tuple[float, float] =(5,3)
+    dpi : int =150
     xlim : Optional[List[float]] = None
     ylim : Optional[List[float]] = None 
     xlabel : Optional[str] = None 
@@ -44,9 +56,13 @@ class Single():
     tight : bool =True
     xrotation : Optional[int] = None
     yrotation : Optional[int] = None 
+    xscale : str = "linear"
+    yscale : str = "linear"
+    xticklabels_show : bool = True
+    yticklabels_show : bool = True
+    xticks_show : bool = True
+    yticks_show : bool = True
     save_path : Optional[str] =None
-    figsize : Tuple[float, float] =(5,3)
-    dpi : int =150
     savefig_kargs : dict = field(default_factory=dict)
     show : bool = True
 
@@ -73,10 +89,20 @@ class Single():
 
         self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize)
         self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize)
+        self.ax.set_xscale(self.xscale)
+        self.ax.set_yscale(self.yscale)
         self.ax.tick_params(axis='x', which='major', labelsize=self.xtickfontsize, 
                             rotation=self.xrotation)
         self.ax.tick_params(axis='y', which='major', labelsize=self.ytickfontsize,
                             rotation=self.yrotation)
+        if not self.xticks_show:
+            self.ax.set_xticks([])
+        if not self.yticks_show:
+            self.ax.set_yticks([])
+        if not self.xticklabels_show:
+            self.ax.set_xticklabels([])
+        if not self.yticklabels_show:
+            self.ax.set_yticklabels([])
         plt.title(self.title, fontsize=self.titlefontsize)
         plt.tight_layout() if self.tight else None
         if self.save_path:
