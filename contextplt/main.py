@@ -14,6 +14,7 @@ class Single():
         dpi : dpi.
         xlim : x limit.
         ylim : y limit.
+        show : If False, plot is not displayed.
         xticklabels_show : If False, y tick labels are hidden.
         yticklabels_show : If False, y tick labels are hidden.
         xtick_show : If False, tick labels and ticks are hidden.
@@ -58,13 +59,13 @@ class Single():
     yrotation : Optional[int] = None 
     xscale : str = "linear"
     yscale : str = "linear"
+    show : bool = True
     xticklabels_show : bool = True
     yticklabels_show : bool = True
     xticks_show : bool = True
     yticks_show : bool = True
     save_path : Optional[str] =None
     savefig_kargs : dict = field(default_factory=dict)
-    show : bool = True
 
     def __post_init__(self): 
         """Set various parameters. 
@@ -78,8 +79,6 @@ class Single():
         self.fig = plt.figure(figsize=self.figsize,dpi=self.dpi)
         self.ax = self.fig.add_subplot(111)
 
-        self.ax.set_xlim(self.xlim) if self.xlim else None
-        self.ax.set_ylim(self.ylim) if self.ylim else None
 
     def __enter__(self):
         return(self)
@@ -87,6 +86,8 @@ class Single():
     def __exit__(self,exc_type, exc_value, exc_traceback):
         self.option()
 
+        self.ax.set_xlim(self.xlim) if self.xlim else None
+        self.ax.set_ylim(self.ylim) if self.ylim else None
         self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize)
         self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize)
         self.ax.set_xscale(self.xscale)
@@ -128,6 +129,7 @@ class Date(Single):
         self.ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
         plt.xticks(rotation=self.rotation,fontsize=self.x_fontsize)
 
+@dataclass(repr=True)
 class Multiple():
     """Create multiple figures in one picture with arguments. 
 
@@ -137,33 +139,34 @@ class Multiple():
         >>> import numpy as np
         >>> import contextplt as cplt
         >>> x1, x2, y1, y2= np.random.rand(4, 100)
-        >>> with cplt.Single(grid=(2,1),figsize=(4,4), dpi=150) as p:
-        >>>     ax = p.set_ax(1, title="title1")
-        >>>     ax.plot(x1,y1)
-        >>>     ax = p.set_ax(2, title="title2")
-        >>>     ax.plot(x2,y2)
+        >>> with cplt.Multiple(grid=(2,1),figsize=(5,4), dpi=150) as mul:
+        >>>     with cplt.MulSingle(mul=mul, index=1 ) as p:
+        >>>         p.ax.scatter(x1,y1)
+        >>>     with cplt.MulSingle(mul=mul, index=2,) as p:
+        >>>         p.ax.scatter(x2,y2)
 
         Various options. Label_outer only leaves the outside of ticks and labels. 
 
-        >>> with cplt.Single(grid=(2,2),figsize=(6,4), dpi=150,
+        >>> with cplt.Multiple(grid=(2,2),figsize=(6,4), dpi=150,
         ...         suptitle="super title", label_outer=True) as p:
         >>>     for i in range(4):
         >>>         ax = p.set_ax(i + 1, xlabel=f"xlabel{i+1}", ylabel=f"ylabel{i+1}")
         >>>         x, y = np.random.rand(2,100)
         >>>         ax.plot(x,y)
     """
-    def __init__(self, figsize=(8,6), dpi=150,grid=(2,2) ,suptitle="",
-            save_path=None,show=True, tight=True, label_outer=False,
-            savefig_kargs : dict = {}):
-        self.fig = plt.figure(figsize=figsize,dpi=dpi)
-        self.grid = grid
-        self.save_path = save_path
-        self.show = show
-        self.tight = tight
-        self.label_outer = label_outer
-        self.savefig_kargs = savefig_kargs
+    figsize : Tuple[float, float] =(5,3)
+    dpi : int =150
+    grid : Tuple[int,int] = (2,2)
+    suptitle : Optional[str] = None
+    save_path : Optional[str] = None
+    show : bool = True
+    tight : bool = True
+    label_outer : bool = False
+    savefig_kargs : dict = field(default_factory=dict)
 
-        plt.suptitle(suptitle)
+    def __post_init__(self):
+        self.fig = plt.figure(figsize=self.figsize,dpi=self.dpi)
+        plt.suptitle(self.suptitle)
 
     def set_ax(self,index,xlim=None, ylim=None, 
                xlabel="", ylabel="",title="", rotation : int = 0):
@@ -172,6 +175,9 @@ class Multiple():
         Args: 
             index (int) : index of which axes object is pointed at. 
         """
+        # TODO : Bug #8, Since if plotting is performed, 
+        #   xlabel, ylabel settings are overwritten, so that use 
+        #   another cojntext managers instead.
         ax = self.fig.add_subplot(*self.grid,index)
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
@@ -198,4 +204,60 @@ class Multiple():
         See DatePlot for example."""
         pass
 
+@dataclass(repr=True)
+class MulSingle():
+    mul : Multiple 
+    index : int 
+    sharex : Optional[plt.Axes] = None
+    sharey : Optional[plt.Axes] = None
+    xlim : Optional[List[float]] = None
+    ylim : Optional[List[float]] = None 
+    xlabel : Optional[str] = None 
+    ylabel : Optional[str] = None
+    xlabelfontsize : Optional[float] = None
+    ylabelfontsize : Optional[float] = None
+    xtickfontsize : Optional[float] = None
+    ytickfontsize : Optional[float] = None
+    title : Optional[str] =None
+    titlefontsize : Optional[float] = None
+    tight : bool =True
+    xrotation : Optional[int] = None
+    yrotation : Optional[int] = None 
+    xscale : str = "linear"
+    yscale : str = "linear"
+    xticklabels_show : bool = True
+    yticklabels_show : bool = True
+    xticks_show : bool = True
+    yticks_show : bool = True
 
+    def __post_init__(self):
+        self.ax = self.mul.fig.add_subplot(
+            *self.mul.grid, 
+            self.index, 
+            sharex=self.sharex,
+            sharey=self.sharey,
+        )
+
+    def __enter__(self):
+        return(self)
+    
+    def __exit__(self,exc_type, exc_value, exc_traceback):
+        self.ax.set_xlim(self.xlim) if self.xlim else None
+        self.ax.set_ylim(self.ylim) if self.ylim else None
+        self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize)
+        self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize)
+        self.ax.set_xscale(self.xscale)
+        self.ax.set_yscale(self.yscale)
+        self.ax.tick_params(axis='x', which='major', labelsize=self.xtickfontsize, 
+                            rotation=self.xrotation)
+        self.ax.tick_params(axis='y', which='major', labelsize=self.ytickfontsize,
+                            rotation=self.yrotation)
+        if not self.xticks_show:
+            self.ax.set_xticks([])
+        if not self.yticks_show:
+            self.ax.set_yticks([])
+        if not self.xticklabels_show:
+            self.ax.set_xticklabels([])
+        if not self.yticklabels_show:
+            self.ax.set_yticklabels([])
+        plt.title(self.title, fontsize=self.titlefontsize)
