@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Usage of contextplt &mdash; contextplt 0.2.4 documentation</title>
+  <title>Usage of contextplt &mdash; contextplt 0.2.6 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -45,6 +45,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Quickstart">Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Parameters-for-cplt.Single">Parameters for cplt.Single</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Pandas-integration">Pandas integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cplt.Multiple">cplt.Multiple</a></li>
 </ul>
 </li>
 </ul>
@@ -366,7 +367,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.2.4
+0.2.6
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -545,6 +546,113 @@ Text(0.5, 1.0, &#39;title&#39;)
 </div>
 <div class="output_area docutils container">
 <img alt="../_images/notebooks_usage_15_0.png" src="../_images/notebooks_usage_15_0.png" />
+</div>
+</div>
+</section>
+<section id="cplt.Multiple">
+<h2>cplt.Multiple<a class="headerlink" href="#cplt.Multiple" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">To control multiple figures, we utilize context managers within context manger structure.</div>
+<div class="line">Very basic usage of this class is as follows</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">Multiple</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span> <span class="k">as</span> <span class="n">mul</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span> <span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_usage_17_0.png" src="../_images/notebooks_usage_17_0.png" />
+</div>
+</div>
+<p>This type of writing is a bit redundant, but it gurantees all of your figures are correctly drawn. Same as cplt.Single, we can use various parameters to control figures.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">Multiple</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span> <span class="k">as</span> <span class="n">mul</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span> <span class="p">,</span>
+                        <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;xlabel&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;ylabel&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">,</span>
+                        <span class="n">xtickfontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ytickfontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">xlabelfontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">xscale</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">yticks_show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_usage_19_0.png" src="../_images/notebooks_usage_19_0.png" />
+</div>
+</div>
+<p>Also, sharex and sharey works as sharing x/y axis between figures. Since ax information is required when drawing next, names returned by context manger should be modified a little.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">x3</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="o">=</span><span class="n">y1</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">Multiple</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">suptitle</span><span class="o">=</span><span class="s2">&quot;Supertitle&quot;</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">mul</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;title1&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;xlabel1&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;ylabel1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p1</span><span class="p">:</span>
+        <span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;title2&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p2</span><span class="p">:</span>
+        <span class="n">p2</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;title3&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;xlabel3&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p3</span><span class="p">:</span>
+        <span class="n">p3</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;title4&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p4</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">p4</span><span class="o">.</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">p4</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_usage_21_0.png" src="../_images/notebooks_usage_21_0.png" />
+</div>
+</div>
+<p>“label_outer” parameter leaves all of the outer information and remove all the inner labels and ticks. Be careful when using it because it also removes inner ticks although ticks are even not shared correctly.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">x3</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span>
+<span class="n">x4</span><span class="p">,</span> <span class="n">y4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="mi">3</span>
+<span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">Multiple</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">suptitle</span><span class="o">=</span><span class="s2">&quot;Supertitle&quot;</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label_outer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">mul</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;ylabel1&quot;</span><span class="p">,</span> <span class="p">)</span> <span class="k">as</span> <span class="n">p1</span><span class="p">:</span>
+        <span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">)</span> <span class="k">as</span> <span class="n">p2</span><span class="p">:</span>
+        <span class="n">p2</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;xlabel3&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;ylabel3&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p3</span><span class="p">:</span>
+        <span class="n">p3</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span><span class="n">y3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;xlabel4&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p4</span><span class="p">:</span>
+        <span class="n">p4</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x4</span><span class="p">,</span><span class="n">y4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_usage_23_0.png" src="../_images/notebooks_usage_23_0.png" />
 </div>
 </div>
 </section>
