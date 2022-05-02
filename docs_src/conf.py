@@ -37,6 +37,7 @@ extensions = [
     "sphinx_autodoc_typehints",
     "nbsphinx",
     "sphinx.ext.mathjax",
+    "sphinx_sitemap"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -62,6 +63,7 @@ html_context = {
   'github_repo': 'contextplt',
   'github_version': 'main/docs_src/',
 }
+html_baseurl = "https://toshiakiasakura.github.io/contextplt/" # for sphinx-sitemap
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
