@@ -57,8 +57,8 @@ class Single():
     tight : bool =True
     xrotation : Optional[int] = None
     yrotation : Optional[int] = None 
-    xscale : str = "linear"
-    yscale : str = "linear"
+    xscale : Optional[str] = None
+    yscale : Optional[str] = None
     show : bool = True
     xticklabels_show : bool = True
     yticklabels_show : bool = True
@@ -90,8 +90,10 @@ class Single():
         self.ax.set_ylim(self.ylim) if self.ylim else None
         self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize)
         self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize)
-        self.ax.set_xscale(self.xscale)
-        self.ax.set_yscale(self.yscale)
+        if self.xscale is not None:
+            self.ax.set_xscale(self.xscale)
+        if self.yscale is not None:
+            self.ax.set_yscale(self.yscale)
         self.ax.tick_params(axis='x', which='major', labelsize=self.xtickfontsize, 
                             rotation=self.xrotation)
         self.ax.tick_params(axis='y', which='major', labelsize=self.ytickfontsize,
