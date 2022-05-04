@@ -7,7 +7,7 @@ contextplt documenation
 ======================================
 
 | **Date**: |today|    **Version**: |release| 
-**Useful links**: `Source Repository <https://github.com/toshiakiasakura/contextplt>`_  
+| **Useful links**: `Source Repository <https://github.com/toshiakiasakura/contextplt>`_  
 
 
 What is contextplt? 
