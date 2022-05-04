@@ -1,9 +1,11 @@
 from dataclasses import dataclass, field
-from typing import Union, Optional, List, Dict, Tuple, Any
+from typing import Union, Optional, List, Dict, Tuple, Any, ClassVar
+import copy
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import matplotlib.dates as mdates
+
 
 @dataclass(repr=True)
 class Single():
@@ -170,6 +172,9 @@ class Multiple():
         self.fig = plt.figure(figsize=self.figsize,dpi=self.dpi)
         plt.suptitle(self.suptitle)
 
+        self.Single = MulSingle
+        self.Single.mul = self
+
     def set_ax(self,index,xlim=None, ylim=None, 
                xlabel="", ylabel="",title="", rotation : int = 0):
         """Return axis object. 
@@ -201,6 +206,8 @@ class Multiple():
         plt.savefig(self.save_path, **self.savefig_kargs) if self.save_path else None
         plt.show() if self.show else None
 
+        self.Single.mul = None
+
     def option(self):
         """This method is for additional graphic setting. 
         See DatePlot for example."""
@@ -208,8 +215,8 @@ class Multiple():
 
 @dataclass(repr=True)
 class MulSingle():
-    mul : Multiple 
     index : int 
+    mul : ClassVar[Multiple] 
     sharex : Optional[plt.Axes] = None
     sharey : Optional[plt.Axes] = None
     xlim : Optional[List[float]] = None
