@@ -39,7 +39,6 @@ extensions = [
     "sphinx_autodoc_typehints",
     "nbsphinx",
     "sphinx.ext.mathjax",
-    "sphinx_sitemap"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -71,3 +70,4 @@ html_baseurl = "https://toshiakiasakura.github.io/contextplt/" # for sphinx-site
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+

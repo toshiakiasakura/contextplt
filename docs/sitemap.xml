@@ -1,2 +1,62 @@
-<?xml version='1.0' encoding='utf-8'?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://toshiakiasakura.github.io/contextplt/index.html</loc></url><url><loc>https://toshiakiasakura.github.io/contextplt/genindex.html</loc></url><url><loc>https://toshiakiasakura.github.io/contextplt/py-modindex.html</loc></url><url><loc>https://toshiakiasakura.github.io/contextplt/_modules/index.html</loc></url><url><loc>https://toshiakiasakura.github.io/contextplt/search.html</loc></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/notebooks/usage.html</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/gallery.html</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/gallery/1_simple_gallery.html</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/genindex.html</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/py-modindex.html</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/index.html</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/contextplt.html</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/_modules/contextplt/main.html</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://toshiakiasakura.github.io/contextplt/_modules/index.html</loc>
+  <lastmod>2022-05-04T08:40:14+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+
+
+</urlset>
