@@ -3,11 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. |br| raw:: html
+
+   <br/>
+
+.. |nbsp|   unicode:: U+00A0 .. NO-BREAK SPACE
+
 contextplt documenation
 ======================================
 
-| **Date**: |today|    **Version**: |release| 
-| **Useful links**: `Source Repository <https://github.com/toshiakiasakura/contextplt>`_  
+**Date**: |today| |nbsp|   **Version**: |release| |br|
+**Useful links**: |nbsp| `Source Repository <https://github.com/toshiakiasakura/contextplt>`_ 
+|nbsp| | |nbsp| `Issues & Ideas <https://github.com/toshiakiasakura/contextplt/issues>`_ 
 
 
 What is contextplt? 
