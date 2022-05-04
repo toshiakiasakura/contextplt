@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matplotlib usages with contextplt &mdash; contextplt 0.2.8 documentation</title>
+  <title>Matplotlib usages with contextplt &mdash; contextplt 0.2.9 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="canonical" href="https://toshiakiasakura.github.io/contextplt/gallery/1_simple_gallery.html" />
@@ -70,10 +70,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#Combined-version-of-figures">Combined version of figures</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#Time-series-visualizeation">Time series visualizeation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#Time-series-barplot">Time series barplot</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#Time-series-visualizeation">Time series visualizeation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Time-series-barplot">Time series barplot</a></li>
 </ul>
 </li>
 </ul>
@@ -401,12 +401,28 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cplt</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.2.9
+</pre></div></div>
+</div>
 <div class="line-block">
 <div class="line">Here, anes96 data set is used. Dataset information is described here.</div>
 <div class="line">Somtimes, functions for creation of figures are prepared in order for reproducibility.</div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.statsmodels.org/devel/datasets/generated/anes96.html</span>
@@ -421,7 +437,7 @@ div.rendered_html tbody tr:hover {
 <section id="Text-placement.">
 <h2>Text placement.<a class="headerlink" href="#Text-placement." title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
@@ -439,14 +455,14 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_5_0.png" src="../_images/gallery_1_simple_gallery_5_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_6_0.png" src="../_images/gallery_1_simple_gallery_6_0.png" />
 </div>
 </div>
 </section>
 <section id="Legend-placement">
 <h2>Legend placement<a class="headerlink" href="#Legend-placement" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">Single</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;xlabel&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;ylabel&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;title&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
@@ -462,12 +478,12 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_7_0.png" src="../_images/gallery_1_simple_gallery_7_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_8_0.png" src="../_images/gallery_1_simple_gallery_8_0.png" />
 </div>
 </div>
 <p>Create a custom legend</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_patch_for_label</span><span class="p">(</span>
@@ -515,7 +531,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patches</span> <span class="o">=</span> <span class="n">create_patch_for_label</span><span class="p">(</span><span class="n">label_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;test1&quot;</span><span class="p">,</span> <span class="s2">&quot;test2&quot;</span><span class="p">,</span> <span class="s2">&quot;test3&quot;</span><span class="p">,</span> <span class="s2">&quot;NAN&quot;</span><span class="p">],</span>
@@ -531,7 +547,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_10_0.png" src="../_images/gallery_1_simple_gallery_10_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_11_0.png" src="../_images/gallery_1_simple_gallery_11_0.png" />
 </div>
 </div>
 </section>
@@ -539,7 +555,7 @@ div.rendered_html tbody tr:hover {
 <section id="Continuous-to-continuous">
 <h1>Continuous to continuous<a class="headerlink" href="#Continuous-to-continuous" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
@@ -553,11 +569,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_13_0.png" src="../_images/gallery_1_simple_gallery_13_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_14_0.png" src="../_images/gallery_1_simple_gallery_14_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scatter_with_linear_reg</span><span class="p">(</span><span class="n">df</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -574,7 +590,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
@@ -587,11 +603,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_16_0.png" src="../_images/gallery_1_simple_gallery_16_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_17_0.png" src="../_images/gallery_1_simple_gallery_17_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contourplot</span><span class="p">(</span><span class="n">df</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -603,7 +619,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
@@ -616,11 +632,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_19_0.png" src="../_images/gallery_1_simple_gallery_19_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_20_0.png" src="../_images/gallery_1_simple_gallery_20_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">histogram2d</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -635,7 +651,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
@@ -650,13 +666,13 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_22_0.png" src="../_images/gallery_1_simple_gallery_22_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_23_0.png" src="../_images/gallery_1_simple_gallery_23_0.png" />
 </div>
 </div>
 <section id="Continuous-to-continuous-with-stratification">
 <h2>Continuous to continuous with stratification<a class="headerlink" href="#Continuous-to-continuous-with-stratification" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stratified_scatter</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">df_</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -679,7 +695,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
@@ -694,14 +710,14 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_25_0.png" src="../_images/gallery_1_simple_gallery_25_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_26_0.png" src="../_images/gallery_1_simple_gallery_26_0.png" />
 </div>
 </div>
 </section>
 <section id="Continuous-with-stratification">
 <h2>Continuous with stratification<a class="headerlink" href="#Continuous-with-stratification" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stacked_histogram</span><span class="p">(</span><span class="n">df</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">c</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -713,7 +729,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
@@ -727,13 +743,13 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_28_0.png" src="../_images/gallery_1_simple_gallery_28_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_29_0.png" src="../_images/gallery_1_simple_gallery_29_0.png" />
 </div>
 </div>
 <section id="kde-density-with-stratification">
 <h3>kde density with stratification<a class="headerlink" href="#kde-density-with-stratification" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kde_density_with_stratification</span><span class="p">(</span>
@@ -749,7 +765,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
@@ -763,14 +779,14 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_31_0.png" src="../_images/gallery_1_simple_gallery_31_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_32_0.png" src="../_images/gallery_1_simple_gallery_32_0.png" />
 </div>
 </div>
 </section>
 <section id="kde-density-area-plot">
 <h3>kde density area plot<a class="headerlink" href="#kde-density-area-plot" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kde_density_area_plot</span><span class="p">(</span>
@@ -797,7 +813,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
@@ -811,14 +827,14 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_34_0.png" src="../_images/gallery_1_simple_gallery_34_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_35_0.png" src="../_images/gallery_1_simple_gallery_35_0.png" />
 </div>
 </div>
 </section>
 <section id="Combined-version-of-figures">
 <h3>Combined version of figures<a class="headerlink" href="#Combined-version-of-figures" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stacked_hist_kde_density_and_area_plot_with_stratification</span><span class="p">(</span>
@@ -829,17 +845,17 @@ div.rendered_html tbody tr:hover {
     <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">Multiple</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span><span class="n">grid</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">label_outer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                              <span class="n">suptitle</span><span class="o">=</span><span class="s2">&quot;stacked hist., kde density and area plot&quot;</span><span class="p">,</span>
                              <span class="p">)</span> <span class="k">as</span> <span class="n">mul</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">mul</span><span class="o">.</span><span class="n">Single</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
             <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">hue</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span> <span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="p">)</span>
             <span class="n">move_legend</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.98</span><span class="p">))</span>
 
-        <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">mul</span><span class="o">.</span><span class="n">Single</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
             <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
                         <span class="n">common_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">bw_adjust</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                         <span class="n">palette</span><span class="o">=</span><span class="n">palette</span> <span class="p">)</span>
             <span class="n">move_legend</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.98</span><span class="p">))</span>
 
-        <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">mul</span><span class="o">.</span><span class="n">Single</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
             <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
                         <span class="n">common_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="s2">&quot;fill&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                         <span class="n">bw_adjust</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.1</span> <span class="p">)</span>
@@ -848,7 +864,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
@@ -862,26 +878,27 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_37_0.png" src="../_images/gallery_1_simple_gallery_37_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_38_0.png" src="../_images/gallery_1_simple_gallery_38_0.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 <section id="Time-series-visualizeation">
-<h2>Time series visualizeation<a class="headerlink" href="#Time-series-visualizeation" title="Permalink to this headline">¶</a></h2>
+<h1>Time series visualizeation<a class="headerlink" href="#Time-series-visualizeation" title="Permalink to this headline">¶</a></h1>
 <p>Here, dataset is changed.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_rdataset</span><span class="p">(</span><span class="s2">&quot;Melanoma&quot;</span><span class="p">,</span> <span class="s2">&quot;MASS&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
-<br/></pre></div>
+</pre></div>
 </div>
 </div>
 <section id="Time-series-barplot">
-<h3>Time series barplot<a class="headerlink" href="#Time-series-barplot" title="Permalink to this headline">¶</a></h3>
+<h2>Time series barplot<a class="headerlink" href="#Time-series-barplot" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">time_series_simple_barplot</span><span class="p">(</span><span class="n">df</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -901,7 +918,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span>
@@ -913,12 +930,12 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_42_0.png" src="../_images/gallery_1_simple_gallery_42_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_43_0.png" src="../_images/gallery_1_simple_gallery_43_0.png" />
 </div>
 </div>
 <p>With a customizations</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">time_series_barplot</span><span class="p">(</span><span class="n">df</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -941,7 +958,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year_date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
@@ -954,11 +971,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_45_0.png" src="../_images/gallery_1_simple_gallery_45_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_46_0.png" src="../_images/gallery_1_simple_gallery_46_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">timeseries_heatmap</span><span class="p">(</span><span class="n">df</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">time_col</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">c</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -975,7 +992,7 @@ div.rendered_html tbody tr:hover {
 
     <span class="n">tick_size</span><span class="o">=</span><span class="mi">6</span>
     <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">Multiple</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> <span class="k">as</span> <span class="n">mul</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span>
+        <span class="k">with</span> <span class="n">mul</span><span class="o">.</span><span class="n">Single</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span>
                             <span class="n">xtickfontsize</span><span class="o">=</span><span class="n">tick_size</span><span class="p">,</span> <span class="n">ytickfontsize</span><span class="o">=</span><span class="n">tick_size</span><span class="p">,</span>
                            <span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
             <span class="n">ht</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_ht</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.0f&quot;</span><span class="p">,</span>
@@ -983,7 +1000,7 @@ div.rendered_html tbody tr:hover {
             <span class="c1">#ht.set_xticklabels(ht.get_xmajorticklabels(), fontsize = tick_size)</span>
             <span class="c1">#ht.set_yticklabels(ht.get_ymajorticklabels(), fontsize = tick_size)</span>
 
-        <span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">MulSingle</span><span class="p">(</span><span class="n">mul</span><span class="o">=</span><span class="n">mul</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Percentage&quot;</span><span class="p">,</span>
+        <span class="k">with</span> <span class="n">mul</span><span class="o">.</span><span class="n">Single</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Percentage&quot;</span><span class="p">,</span>
                             <span class="n">xtickfontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ytickfontsize</span><span class="o">=</span><span class="mi">6</span>
                            <span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
             <span class="n">ht</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_ht_per</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.1f&quot;</span><span class="p">,</span>
@@ -992,7 +1009,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_rdataset</span><span class="p">(</span><span class="s2">&quot;Melanoma&quot;</span><span class="p">,</span> <span class="s2">&quot;MASS&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
@@ -1008,26 +1025,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/gallery_1_simple_gallery_47_0.png" src="../_images/gallery_1_simple_gallery_47_0.png" />
+<img alt="../_images/gallery_1_simple_gallery_48_0.png" src="../_images/gallery_1_simple_gallery_48_0.png" />
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
-</section>
 </section>
 </section>
 
