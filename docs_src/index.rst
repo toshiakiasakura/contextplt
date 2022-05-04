@@ -3,12 +3,32 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to contextplt's documentation!
+contextplt documenation
 ======================================
+
+| **Date**: |today|    **Version**: |release| 
+| **Useful links**: `Source Repository <https://github.com/toshiakiasakura/contextplt>`_  
+
+
+What is contextplt? 
+-------------------
+contextplt is a Python package producing contextmanger inferences 
+to create matplotlib based figures more efficiently. 
+Codes and usage is explained in :doc:`usage page<notebooks/usage>`.
+
+
+
+Installation
+--------------------------------
+
+.. code-block:: bash
+
+   pip install contextplt
+
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: How to use:
 
    notebooks/usage
 
@@ -18,4 +38,6 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
+
+..
+  * :ref:`search`
