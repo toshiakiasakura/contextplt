@@ -43,6 +43,7 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
+* :doc:`_modules/contextplt`
 
 ..
   * :ref:`search`
