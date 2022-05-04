@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import matplotlib.dates as mdates
 
-
 @dataclass(repr=True)
 class Single():
     """Create one figure. Adjust figure with arguments. 
@@ -144,9 +143,9 @@ class Multiple():
         >>> import contextplt as cplt
         >>> x1, x2, y1, y2= np.random.rand(4, 100)
         >>> with cplt.Multiple(grid=(2,1),figsize=(5,4), dpi=150) as mul:
-        >>>     with cplt.MulSingle(mul=mul, index=1 ) as p:
+        >>>     with mul.Single(index=1) as p:
         >>>         p.ax.scatter(x1,y1)
-        >>>     with cplt.MulSingle(mul=mul, index=2,) as p:
+        >>>     with mul.Single(index=2) as p:
         >>>         p.ax.scatter(x2,y2)
 
         Various options. Label_outer only leaves the outside of ticks and labels. 
@@ -172,6 +171,9 @@ class Multiple():
         self.fig = plt.figure(figsize=self.figsize,dpi=self.dpi)
         plt.suptitle(self.suptitle)
 
+        # Note: class variable is used for accessing this Multiple class instance
+        #   from a MulSingle object. MulSingle.mul is set to be None 
+        #   when exit from the context.
         self.Single = MulSingle
         self.Single.mul = self
 
