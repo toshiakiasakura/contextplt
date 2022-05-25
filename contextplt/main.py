@@ -20,6 +20,8 @@ class Single():
         yticklabels_show : If False, y tick labels are hidden.
         xtick_show : If False, tick labels and ticks are hidden.
         ytick_show : If False, tick labels and ticks are hidden.
+        hide_spines : Hide outlines of axes. Takes "right","top","bottom","left" or these list.
+            Also takes "all" to hide outlines and ticks of plot.
 
     Examples: 
         Basic usage. 
@@ -65,7 +67,8 @@ class Single():
     yticklabels_show : bool = True
     xticks_show : bool = True
     yticks_show : bool = True
-    save_path : Optional[str] =None
+    hide_spines : Optional[Union[List[str]]] = None
+    save_path : Optional[str] = None
     savefig_kargs : dict = field(default_factory=dict)
 
     def __post_init__(self): 
@@ -107,6 +110,11 @@ class Single():
             self.ax.set_xticklabels([])
         if not self.yticklabels_show:
             self.ax.set_yticklabels([])
+        if self.hide_spines:
+            if self.hide_spines == "all":
+                self.ax.set_axis_off()
+            else:
+                self.ax.spines[self.hide_spines].set_visible(False)
         plt.title(self.title, fontsize=self.titlefontsize)
         plt.tight_layout() if self.tight else None
         if self.save_path:
@@ -222,6 +230,12 @@ class Multiple():
 
 @dataclass(repr=True)
 class MulSingle():
+    """
+
+    Args:
+        hide_spines : Hide outlines of axes. Takes "right","top","bottom","left" or these list.
+            Also takes "all" to hide outlines and ticks of plot.
+    """
     index : int 
     mul : ClassVar[Multiple] 
     sharex : Optional[plt.Axes] = None
@@ -243,6 +257,7 @@ class MulSingle():
     yscale : Optional[str] = None
     xticklabels_show : bool = True
     yticklabels_show : bool = True
+    hide_spines : Optional[Union[List[str]]] = None
     xticks_show : bool = True
     yticks_show : bool = True
 
@@ -278,5 +293,10 @@ class MulSingle():
             self.ax.set_xticklabels([])
         if not self.yticklabels_show:
             self.ax.set_yticklabels([])
+        if self.hide_spines:
+            if self.hide_spines == "all":
+                self.ax.set_axis_off()
+            else:
+                self.ax.spines[self.hide_spines].set_visible(False)
         plt.title(self.title, fontsize=self.titlefontsize)
 
