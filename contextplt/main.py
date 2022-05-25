@@ -206,7 +206,11 @@ class Multiple():
                 ax.label_outer()
         plt.tight_layout() if self.tight else None
         plt.savefig(self.save_path, **self.savefig_kargs) if self.save_path else None
-        plt.show() if self.show else None
+
+        if self.show:
+            plt.show()
+        else:
+            plt.close()
 
         self.Single.mul = None
 
@@ -274,3 +278,4 @@ class MulSingle():
         if not self.yticklabels_show:
             self.ax.set_yticklabels([])
         plt.title(self.title, fontsize=self.titlefontsize)
+
