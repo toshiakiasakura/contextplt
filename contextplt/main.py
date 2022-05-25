@@ -89,8 +89,8 @@ class Single():
 
         self.ax.set_xlim(self.xlim) if self.xlim else None
         self.ax.set_ylim(self.ylim) if self.ylim else None
-        self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize)
-        self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize)
+        self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize) if self.xlabel else None
+        self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize) if self.ylabel else None
         if self.xscale is not None:
             self.ax.set_xscale(self.xscale)
         if self.yscale is not None:
@@ -161,10 +161,10 @@ class Multiple():
     dpi : int =150
     grid : Tuple[int,int] = (2,2)
     suptitle : Optional[str] = None
-    save_path : Optional[str] = None
     show : bool = True
     tight : bool = True
     label_outer : bool = False
+    save_path : Optional[str] = None
     savefig_kargs : dict = field(default_factory=dict)
 
     def __post_init__(self):
@@ -183,10 +183,11 @@ class Multiple():
 
         Args: 
             index (int) : index of which axes object is pointed at. 
+
+        Note:
+            Currently this method is not maintained, and intended to use
+            self.mul attribute to create another figure.
         """
-        # TODO : Bug #8, Since if plotting is performed, 
-        #   xlabel, ylabel settings are overwritten, so that use 
-        #   another cojntext managers instead.
         ax = self.fig.add_subplot(*self.grid,index)
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
@@ -259,8 +260,8 @@ class MulSingle():
     def __exit__(self,exc_type, exc_value, exc_traceback):
         self.ax.set_xlim(self.xlim) if self.xlim else None
         self.ax.set_ylim(self.ylim) if self.ylim else None
-        self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize)
-        self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize)
+        self.ax.set_xlabel(self.xlabel, fontsize=self.xlabelfontsize) if self.xlabel else None
+        self.ax.set_ylabel(self.ylabel, fontsize=self.ylabelfontsize) if self.ylabel else None
         if self.xscale is not None:
             self.ax.set_xscale(self.xscale)
         if self.yscale is not None:
