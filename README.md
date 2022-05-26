@@ -20,4 +20,6 @@ See documentation page : https://toshiakiasakura.github.io/contextplt/
 # Note 
 Dockerfile and docker-compose.yml are prepared for running example codes.
 
+# Related packages
+- [necoplot](https://github.com/guneco/necoplot/)
 
