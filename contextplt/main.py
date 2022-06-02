@@ -144,6 +144,12 @@ class Date(Single):
 class Multiple():
     """Create multiple figures in one picture with arguments. 
 
+    Args:
+        mosaic : Support of matplotlib.pyplot.subplot_mosaic. After specifying this mosaic parameter,
+            access each ax by passing a character in mosaic.
+        sharex : for mosaic plot.
+        sharey : for mosaic plot.
+
     Examples:
         Basic usage. 
         
@@ -159,24 +165,33 @@ class Multiple():
         Various options. Label_outer only leaves the outside of ticks and labels. 
 
         >>> with cplt.Multiple(grid=(2,2),figsize=(6,4), dpi=150,
-        ...         suptitle="super title", label_outer=True) as p:
+        ...         suptitle="super title", label_outer=True) as mul:
         >>>     for i in range(4):
-        >>>         ax = p.set_ax(i + 1, xlabel=f"xlabel{i+1}", ylabel=f"ylabel{i+1}")
-        >>>         x, y = np.random.rand(2,100)
-        >>>         ax.plot(x,y)
+        >>>         with mul.Single(index=i+1,xlabel=f"xlabel{i+1}", ylabel=f"ylabel{i+1}") as p:
+        >>>             x, y = np.random.rand(2,100)
+        >>>             p.ax.plot(x,y)
     """
     figsize : Tuple[float, float] =(5,3)
     dpi : int =150
     grid : Tuple[int,int] = (2,2)
     suptitle : Optional[str] = None
     show : bool = True
-    tight : bool = True
+    tight : bool = False
     label_outer : bool = False
     save_path : Optional[str] = None
     savefig_kargs : dict = field(default_factory=dict)
+    mosaic : Optional[List] = None
+    constrained_layout : Optional[bool] = None
+    sharex : bool = False
+    sharey : bool = False
 
     def __post_init__(self):
-        self.fig = plt.figure(figsize=self.figsize,dpi=self.dpi)
+        if self.mosaic is not None:
+            self.constrained_layout = True if self.constrained_layout is None else self.constrained_layout
+        self.fig = plt.figure(figsize=self.figsize, dpi=self.dpi, 
+                              constrained_layout=self.constrained_layout)
+        if self.mosaic is not None:
+            self.ax_dict = self.fig.subplot_mosaic(self.mosaic, sharex=self.sharex, sharey=self.sharey)
         plt.suptitle(self.suptitle)
 
         # Note: class variable is used for accessing this Multiple class instance
@@ -196,6 +211,7 @@ class Multiple():
             Currently this method is not maintained, and intended to use
             self.mul attribute to create another figure.
         """
+        print("Future deplicate notice: Use mul.Single attribute.")
         ax = self.fig.add_subplot(*self.grid,index)
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
@@ -262,12 +278,19 @@ class MulSingle():
     yticks_show : bool = True
 
     def __post_init__(self):
-        self.ax = self.mul.fig.add_subplot(
-            *self.mul.grid, 
-            self.index, 
-            sharex=self.sharex,
-            sharey=self.sharey,
-        )
+        if self.mul.mosaic is None:
+            self.ax = self.mul.fig.add_subplot(
+                *self.mul.grid, 
+                self.index, 
+                sharex=self.sharex,
+                sharey=self.sharey,
+            )
+        else:
+            self.ax = self.mul.ax_dict[self.index]
+            if self.sharex is not None: 
+                self.ax.get_shared_x_axes().join(self.ax, self.sharex)
+            if self.sharey is not None:
+                self.ax.get_shared_y_axes().join(self.ax, self.sharey)
 
     def __enter__(self):
         return(self)

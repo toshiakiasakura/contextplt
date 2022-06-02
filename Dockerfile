@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook:584f43f06586
+FROM jupyter/scipy-notebook:lab-3.4.2
 
 WORKDIR /workdir
 EXPOSE 8888
