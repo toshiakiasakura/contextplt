@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Usage of contextplt &mdash; contextplt 0.2.9 documentation</title>
+  <title>Usage of contextplt &mdash; contextplt 0.2.11 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="canonical" href="https://toshiakiasakura.github.io/contextplt/notebooks/usage.html" />
@@ -15,6 +15,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -58,6 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Parameters-for-cplt.Single">Parameters for cplt.Single</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Pandas-integration">Pandas integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cplt.Multiple">cplt.Multiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Mosaic-plot">Mosaic plot</a></li>
 </ul>
 </li>
 </ul>
@@ -361,10 +363,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Usage-of-contextplt">
-<h1>Usage of contextplt<a class="headerlink" href="#Usage-of-contextplt" title="Permalink to this headline">¶</a></h1>
+<h1>Usage of contextplt<a class="headerlink" href="#Usage-of-contextplt" title="Permalink to this heading">¶</a></h1>
 <p>Contextplt is for writing matplotlib very simply using context manager. This package is a simple wrapper for matplotlib and calls various functions from parameters of context managers.</p>
 <section id="Quickstart">
-<h2>Quickstart<a class="headerlink" href="#Quickstart" title="Permalink to this headline">¶</a></h2>
+<h2>Quickstart<a class="headerlink" href="#Quickstart" title="Permalink to this heading">¶</a></h2>
 <p>When two dimensional variables are visualized with customized settings, we often use object-based inference instead of pyplot interface like this.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -383,7 +385,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.2.9
+0.2.11
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -485,7 +487,7 @@ Text(0.5, 1.0, &#39;title&#39;)
 <p>This usage is helpful when figure setting are shared but variables are replaced with new ones.</p>
 </section>
 <section id="Parameters-for-cplt.Single">
-<h2>Parameters for cplt.Single<a class="headerlink" href="#Parameters-for-cplt.Single" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters for cplt.Single<a class="headerlink" href="#Parameters-for-cplt.Single" title="Permalink to this heading">¶</a></h2>
 <p>This section explains how to use parameters in cplt.Single. This is a full parameters currently impelemented in cplt.Single.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -525,7 +527,7 @@ Text(0.5, 1.0, &#39;title&#39;)
 </div>
 </section>
 <section id="Pandas-integration">
-<h2>Pandas integration<a class="headerlink" href="#Pandas-integration" title="Permalink to this headline">¶</a></h2>
+<h2>Pandas integration<a class="headerlink" href="#Pandas-integration" title="Permalink to this heading">¶</a></h2>
 <p>Since pandas’ plot method accepts ax object, pass p.ax returned by context manager yield a customized figure.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -553,7 +555,7 @@ Text(0.5, 1.0, &#39;title&#39;)
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">Single</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Title&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;xlabel&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;ylabel&quot;</span><span class="p">,</span> <span class="n">ytickfontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_ht</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Reds&quot;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.0f&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
-                        <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="mi">6</span><span class="p">})</span>
+                        <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="mi">6</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -566,13 +568,13 @@ Text(0.5, 1.0, &#39;title&#39;)
 </div>
 </section>
 <section id="cplt.Multiple">
-<h2>cplt.Multiple<a class="headerlink" href="#cplt.Multiple" title="Permalink to this headline">¶</a></h2>
+<h2>cplt.Multiple<a class="headerlink" href="#cplt.Multiple" title="Permalink to this heading">¶</a></h2>
 <div class="line-block">
 <div class="line">To control multiple figures, we utilize context managers within context manger structure.</div>
 <div class="line">Very basic usage of this class is as follows</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -593,7 +595,7 @@ Text(0.5, 1.0, &#39;title&#39;)
 </div>
 <p>This type of writing is a bit redundant, but it gurantees all of your figures are correctly drawn. Same as cplt.Single, we can use various parameters to control figures.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -616,7 +618,7 @@ Text(0.5, 1.0, &#39;title&#39;)
 </div>
 <p>Also, sharex and sharey works as sharing x/y axis between figures. Since ax information is required when drawing next, names returned by context manger should be modified a little.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
@@ -645,7 +647,7 @@ Text(0.5, 1.0, &#39;title&#39;)
 </div>
 <p>“label_outer” parameter leaves all of the outer information and remove all the inner labels and ticks. Be careful when using it because it also removes inner ticks although ticks are even not shared correctly.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
@@ -669,6 +671,36 @@ Text(0.5, 1.0, &#39;title&#39;)
 </div>
 <div class="output_area docutils container">
 <img alt="../_images/notebooks_usage_23_0.png" src="../_images/notebooks_usage_23_0.png" />
+</div>
+</div>
+</section>
+<section id="Mosaic-plot">
+<h2>Mosaic plot<a class="headerlink" href="#Mosaic-plot" title="Permalink to this heading">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">contextplt</span> <span class="k">as</span> <span class="nn">cplt</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">mosaic</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="p">[[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span>
+           <span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">]]],</span>
+    <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">],</span>
+<span class="p">]</span>
+<span class="k">with</span> <span class="n">cplt</span><span class="o">.</span><span class="n">Multiple</span><span class="p">(</span><span class="n">mosaic</span> <span class="o">=</span> <span class="n">mosaic</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">mul</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">mul</span><span class="o">.</span><span class="n">Single</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p1</span><span class="p">:</span>
+        <span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">mul</span><span class="o">.</span><span class="n">Single</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">ax</span><span class="p">)</span> <span class="k">as</span> <span class="n">p2</span><span class="p">:</span>
+        <span class="n">p2</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span><span class="n">y1</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_usage_25_0.png" src="../_images/notebooks_usage_25_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
