@@ -115,7 +115,7 @@ class Single():
                 self.ax.set_axis_off()
             else:
                 self.ax.spines[self.hide_spines].set_visible(False)
-        plt.title(self.title, fontsize=self.titlefontsize)
+        self.ax.set_title(self.title, fontsize=self.titlefontsize)
         plt.tight_layout() if self.tight else None
         if self.save_path:
             plt.savefig(self.save_path, **self.savefig_kargs)
@@ -321,5 +321,5 @@ class MulSingle():
                 self.ax.set_axis_off()
             else:
                 self.ax.spines[self.hide_spines].set_visible(False)
-        plt.title(self.title, fontsize=self.titlefontsize)
+        self.ax.set_title(self.title, fontsize=self.titlefontsize)
 
